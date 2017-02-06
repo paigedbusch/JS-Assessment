@@ -112,12 +112,10 @@ function removeItem(arr, str) {
 // #11 Write a function  called doubleTheFun that takes 1 parameter. It should double numbers, and
 // repeats strings. example 4->8, 2.5->5, 'Awesome'->'AwesomeAwesome'
 function doubleTheFun(p1) {
-  if (p1 !== isNaN && typeof p1 === 'number') {
-    p1 += p1;
-  } else if (p1 !== isNaN && typeof p1 === 'string') {
-    p1 *= 2;
-  } else if (typeof p1 === 'string') {
-    p1 += p1;
+  if (isNaN(p1)) {
+	  return p1 + p1;
+  } else {
+	  return p1 * 2;
   }
   return p1;
 }
@@ -135,13 +133,21 @@ function makeChatMessage(message, author) {
 	var obj = {
 	message: message,
 	author: author,
-	timestamp: new Date().getTime()
-	};
+	timestamp: new Date()
+	}
 	return obj;
 }
 
 // #14 Create a function called coderTest that takes in an object that is a person. It looks to see if the person’s name is Jeremy and then changes the person object to have a property called lovesCode with a value of 10.  If their name is Brack set lovesCode to 0.  otherwise set lovesCode to 5.
-
+function coderTest(person) {
+	if (person.name === 'Jeremy') {
+		person.lovesCode = 10;
+	} else if (person.name === 'Brack') {
+		person.lovesCode = 0;
+	} else {
+		person.lovesCode = 5;
+	}
+}
 
 // #15 Create a function called outside that takes in a temperature (number), a humidity(number), and a cloudiness(number), in that order. Using the following to return the correct values
 /*
@@ -167,6 +173,6 @@ function outside(temp, humidity, cloudiness) {
 
 // #16 Create a function called callerBack that takes in a function (holla) and a string parameter(back) and invokes it(holla) with the argument string(back) + ' back'."
 // example - If I call you with 'Give it' you should invoke holla with 'Give it back'
-function callerBack(func, cb) {
-	cb(out + ' back');
+function callerBack(holla, back) {
+	holla(back + ' back');
 }
